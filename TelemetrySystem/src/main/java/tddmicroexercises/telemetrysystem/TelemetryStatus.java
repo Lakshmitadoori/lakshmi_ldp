@@ -5,8 +5,12 @@ import java.util.Random;
 public class TelemetryStatus implements ITelemetryStatus {
     private boolean onlineStatus;
 
-    private final Random connectionEventsSimulator = new Random(42);
+ private final Random connectionEventsSimulator;
 
+    public TelemetryClient()
+    {
+        connectionEventsSimulator = new Random(42);
+    }
         @Override
     public void connect(String telemetryServerConnectionString)
     {

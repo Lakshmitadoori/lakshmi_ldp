@@ -6,8 +6,12 @@ public class TelemetryClient implements ITelemetrySender
 {
     private String diagnosticMessageResult = "";
 
-    private final Random connectionEventsSimulator = new Random(42);
+    private final Random connectionEventsSimulator;
 
+    public TelemetryClient()
+    {
+        connectionEventsSimulator = new Random(42);
+    }
 
     @Override
     public void send(String message)
