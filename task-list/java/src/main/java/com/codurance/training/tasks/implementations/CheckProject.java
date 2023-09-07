@@ -26,5 +26,10 @@ public class CheckProject implements ICheckProject {
     public void check(String idString, Map<String, List<Task>> tasks) {
         setDone(idString, true, tasks);
     }
+    
+     @Override
+    public void uncheck(String idString, Map<String, List<Task>> tasks) {
+        setDone(idString, false, tasks);
+    }
 
 }

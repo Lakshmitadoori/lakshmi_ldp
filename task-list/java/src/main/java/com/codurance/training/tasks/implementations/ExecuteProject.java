@@ -11,17 +11,18 @@ public class ExecuteProject implements ICommand {
     public IShow show;
     public AddProjectTask add;
     public ICheckProject check;
-    public IUncheckProject uncheck;
     public IHelp help;
     public IDisplayError displayError;
     public IDeleteTask delete;
     public IDeadline deadline;
     public ITodayTasks todayDueTasks;
+
+     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
     public ExecuteProject(){
        this.show=  new ShowProject();
        this.add=new AddProjectTask();
        this.check=new CheckProject();
-       this.uncheck=new UncheckProject();
        this.help=new Help();
         this.displayError = new DisplayError();
         this.delete=new DeleteProject();
@@ -43,15 +44,14 @@ public class ExecuteProject implements ICommand {
                 check.check(commandRest[1],tasks);
                 break;
             case "uncheck":
-                uncheck.uncheck(commandRest[1],tasks);
+                check.uncheck(commandRest[1],tasks);
                 break;
             case "delete":
                 delete.deleteTask(commandRest[1],tasks);
                 break;
             case "deadline":
                 String[] commandRe = commandRest[1].split(" ", 2);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date deadlineDate = sdf.parse(commandRe[1]);
+                Date deadlineDate = sdf.parse(commandRe[1]); 
                 deadline.setDeadline(commandRe[0], deadlineDate, tasks);
                 break;
             case "today":
